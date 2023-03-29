@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           bloc: homeScreenCubit,
           builder: (context, state) {
             if (state.isLoadingData) {
-              return const Expanded(child: Center(child: CircularProgressIndicator()));
+              return const Center(child: CircularProgressIndicator());
             } else {
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 decoration: BoxDecoration(
                                   border: Border.all(color: AppColors.white400, width: 1.0),
                                   borderRadius: BorderRadius.circular(6),
-                                  color: AppColors.white400,
+                                  color: Colors.white,
                                 ),
                                 child: DropdownButton<Coin>(
                                   underline: const SizedBox.shrink(),

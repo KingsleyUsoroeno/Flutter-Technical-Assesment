@@ -37,6 +37,7 @@ class _TransferCryptoScreenState extends State<TransferCryptoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
@@ -71,78 +72,78 @@ class _TransferCryptoScreenState extends State<TransferCryptoScreen> {
               child: state is CoinTransferLoadingState
                   ? const Center(child: CircularProgressIndicator())
                   : Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 70,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Color(0x13000000), offset: Offset(0, 2), blurRadius: 8.0)
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          height: 70,
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color(0x13000000), offset: Offset(0, 2), blurRadius: 8.0)
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Container(
-                                  width: 35,
-                                  height: 35,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        image: AssetImage(widget.coin.image),
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'Available Balance',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF6C757D)),
-                                  ),
-                                  Text(
-                                    "${widget.coin.balance} ${widget.coin.name}",
-                                    style: const TextStyle(
-                                        fontSize: 19.0,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF212529)),
-                                  )
-                                ],
-                              )
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: AssetImage(widget.coin.image),
+                                  fit: BoxFit.cover,
+                                )),
                           ),
                         ),
-                        const SizedBox(height: 40),
-                        CustomTextField(
-                          controller: _receiverNameController,
-                          label: "Receiver's name",
-                        ),
-                        const SizedBox(height: 20),
-                        CustomTextField(
-                          controller: _amountTextController,
-                          label: 'Amount',
-                        ),
-                        const SizedBox(height: 20),
-                        CustomTextField(
-                          controller: countryController,
-                          label: 'Country of Origin',
-                        ),
-                        const SizedBox(height: 30),
-                        CustomButton(
-                          text: 'Send ${widget.coin.name}',
-                          onPress: _transferCoin,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Available Balance',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF6C757D)),
+                            ),
+                            Text(
+                              "${widget.coin.balance} ${widget.coin.name}",
+                              style: const TextStyle(
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF212529)),
+                            )
+                          ],
                         )
                       ],
                     ),
+                  ),
+                  const SizedBox(height: 40),
+                  CustomTextField(
+                    controller: _receiverNameController,
+                    label: "Receiver's name",
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextField(
+                    controller: _amountTextController,
+                    label: 'Amount',
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextField(
+                    controller: countryController,
+                    label: 'Country of Origin',
+                  ),
+                  const SizedBox(height: 30),
+                  CustomButton(
+                    text: 'Send ${widget.coin.name}',
+                    onPress: _transferCoin,
+                  )
+                ],
+              ),
             ),
           );
         },

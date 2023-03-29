@@ -11,14 +11,14 @@ class Wallet {
     return amount > 0 ? formatter.format(amount) : "0";
   }
 
-  Map<String, dynamic> toJson() => {'coinType': coinType, 'amount': amount};
-
   factory Wallet.fromJson(Map<String, dynamic> value) {
     return Wallet(
       coinType: value['coinType'],
       amount: value['amount'],
     );
   }
+
+  Map<String, dynamic> toJson() => {'coinType': coinType, 'amount': amount};
 
   Wallet copyWith({String? coinType, int? amount}) {
     return Wallet(coinType: coinType ?? this.coinType, amount: amount ?? this.amount);
